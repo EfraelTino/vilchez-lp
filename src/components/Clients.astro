@@ -1,0 +1,142 @@
+---
+import Services from "./Services.astro";
+import { Image } from "astro:assets";
+import type {ClientsMarqueProps} from "../lib/types";
+const clientsMarquee: ClientsMarqueProps = [
+    {
+        id: 1,
+        photo: "/clientes/01.jpg",
+        name: "Banco de la Nación",
+    },
+    {
+        id: 2,
+        photo: "/clientes/02.jpg",
+        name: "Ministerio de Cultura",
+    },
+    {
+        id: 3,
+        photo: "/clientes/03.jpg",
+        name: "Municipalidad de Lima",
+    },
+    {
+        id: 4,
+        photo: "/clientes/04.jpg",
+        name: "Telefónica",
+    },
+    {
+        id: 5,
+        photo: "/clientes/05.jpg",
+        name: "Backus",
+    },
+    {
+        id: 6,
+        photo: "/clientes/06.jpg",
+        name: "Rimac Seguros",
+    },
+    {
+        id: 7,
+        photo: "/clientes/07.jpg",
+        name: "Universidad de Lima",
+    },
+    {
+        id: 8,
+        photo: "/clientes/08.jpg",
+        name: "BBVA",
+    },
+    {
+        id: 9,
+        photo: "/clientes/09.jpg",
+        name: "Claro Perú",
+    },
+    {
+        id: 10,
+        photo: "/clientes/10.jpg",
+        name: "Mapfre",
+    },
+];
+---
+
+<Services />
+<section class="max-w-6xl w-full mx-auto px-4 md:px-0 py-12" id="servicios">
+    <div class="relative overflow-hidden mt-10 mb-3" id="clientes">
+        <!-- Primer slider - se mueve a la izquierda -->
+        <div class="slider-row mb-4 overflow-hidden relative">
+            <div class="slider-track-left">
+                <div id="gallery" class="flex gap-4 w-full">
+                    {
+                        clientsMarquee.map((item) => (
+                            <div class="gallery-item flex relative flex-grow items-center overflow-hidden transition-all duration-500 ease-in-out w-[100px] md:w-[140px]">
+                                <Image
+                                    src={item.photo}
+                                    alt={item.name}
+                                    width={300}
+                                    height={300}
+                                    format="jpg"
+                                    quality="mid"
+                                    class="w-full object-cover transition-transform duration-500"
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- Gradientes laterales -->
+        <div
+            class="pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-gradient-to-r from-white z-10"
+        >
+        </div>
+        <div
+            class="pointer-events-none absolute inset-y-0 right-0 h-full w-1/12 bg-gradient-to-l from-white z-10"
+        >
+        </div>
+    </div>
+</section>
+
+<style>
+    .slider-row {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slider-track-left {
+        display: flex;
+        width: max-content;
+        animation: scroll-left 50s linear infinite;
+    }
+
+    .slider-track-right {
+        display: flex;
+        width: max-content;
+        animation: scroll-right 50s linear infinite;
+    }
+
+    /* Animaciones */
+    @keyframes scroll-left {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes scroll-right {
+        from {
+            transform: translateX(-50%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Imágenes responsivas */
+    #gallery img {
+        object-fit: cover;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+    #gallery img:hover {
+    }
+</style>

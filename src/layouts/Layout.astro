@@ -1,0 +1,184 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	noIndex?: boolean; // Opción para ocultar páginas si fuera necesario
+}
+
+const {
+	title = "Vilchez Group | Alquiler de Maquinaria y Obras Civiles en Lima y Perú",
+	description = "Empresa líder en ingeniería y construcción. Especialistas en obras civiles, saneamiento, sistemas contra incendios y alquiler de flota amarilla (Excavadoras, Retroexcavadoras) en Lima y provincias.",
+	image = "/images/og-image.jpg",
+	noIndex = false,
+} = Astro.props;
+
+// Normalización de URL para evitar errores de compilación
+const siteBase = Astro.site
+	? Astro.site.toString()
+	: "https://www.Vilchezgroup.com";
+const canonicalURL = new URL(Astro.url.pathname, siteBase);
+const socialImageURL = new URL(image, siteBase);
+
+// --- ESTRATEGIA SEO: DATOS ESTRUCTURADOS (SCHEMA.ORG) ---
+// Esto es lo que Google lee para ponerte en los mapas y snippets.
+const schemaMarkup = JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "GeneralContractor", // Tipo específico para constructoras
+	name: "Vilchez Group",
+	alternateName: "Blue Ingeniería & Construcción",
+	url: siteBase,
+	logo: new URL("/images/logo.png", siteBase),
+	image: socialImageURL,
+	description: description,
+	telephone: "+51937480305",
+	email: "info@vilchezgroup.com",
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: "Tu Dirección Exacta en Lince", // PONER DIRECCIÓN REAL DEL BROCHURE
+		addressLocality: "Lince",
+		addressRegion: "Lima",
+		postalCode: "15046",
+		addressCountry: "PE",
+	},
+	geo: {
+		"@type": "GeoCoordinates",
+		latitude: "-12.0842", // Coordenadas aprox de Lince (AJUSTAR LAS REALES)
+		longitude: "-77.0353",
+	},
+	areaServed: [
+		{ "@type": "City", name: "Lima" },
+		{ "@type": "City", name: "Juliaca" },
+		{ "@type": "City", name: "Puno" },
+		{ "@type": "City", name: "Callao" },
+		{ "@type": "Country", name: "Peru" },
+	],
+	priceRange: "$$",
+	openingHoursSpecification: {
+		"@type": "OpeningHoursSpecification",
+		dayOfWeek: [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+		],
+		opens: "08:00",
+		closes: "17:00",
+	},
+	// Catálogo de Servicios para que Google sepa qué alquilas
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Servicios de Construcción y Alquiler",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Alquiler de Excavadoras",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Alquiler de Retroexcavadoras",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Instalaciones Sanitarias y ACI",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Pavimentación y Asfaltado",
+				},
+			},
+		],
+	},
+});
+---
+
+<!doctype html>
+<html lang="es-PE" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		{
+			noIndex ? (
+				<meta name="robots" content="noindex, nofollow" />
+			) : (
+				<meta
+					name="robots"
+					content="index, follow, max-image-preview:large"
+				/>
+			)
+		}
+
+		<meta
+			name="keywords"
+			content="constructora lima, alquiler maquinaria pesada peru, excavadoras lince, obras civiles, saneamiento juliaca, ingeniería sanitaria, Vilchez group"
+		/>
+
+		<meta name="geo.region" content="PE-LMA" />
+		<meta name="geo.placename" content="Lince" />
+		<meta name="geo.position" content="-12.0842;-77.0353" />
+		<meta name="ICBM" content="-12.0842, -77.0353" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta
+			property="og:image:alt"
+			content="Vilchez Group Ingeniería y Construcción"
+		/>
+		<meta property="og:site_name" content="Vilchez Group" />
+		<meta property="og:locale" content="es_PE" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script type="application/ld+json" set:html={schemaMarkup} />
+	</head>
+	<body
+		class="bg-white text-slate-900 antialiased selection:bg-[#0092b8] selection:text-white flex flex-col min-h-screen"
+	>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 80px;
+	}
+	body {
+		overflow-x: hidden;
+		font-family: "Plus Jakarta Sans", sans-serif;
+	}
+</style>

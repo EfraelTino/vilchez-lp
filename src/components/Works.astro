@@ -1,0 +1,191 @@
+---
+import { Image } from "astro:assets";
+import type { ProjectProps } from "../lib/types";
+
+const projects: ProjectProps = [
+    {
+        id: 1,
+        title: "PTAR - JULIACA",
+        category: "Saneamiento",
+        location: "Juliaca, Puno",
+        status: "Finalizado",
+        asset: "/projects/1.jpg", // Ref: Saneamiento
+        theme: "blue", // #0092b8
+    },
+    {
+        id: 2,
+        title: "INSTALACIÓN DE ASFALTO",
+        category: "Vialidad Urbana",
+        location: "Collique, Comas - Lima",
+        status: "Finalizado",
+        asset: "/projects/2.jpg", // Ref: Pistas
+        theme: "gold", // #ffb900
+    },
+    {
+        id: 3,
+        title: "MEJORAMIENTO AV. TACNA",
+        category: "Vialidad Urbana",
+        location: "Juliaca, Puno",
+        status: "Finalizado",
+        asset: "/projects/3.jpg", // Ref: Carretera
+        theme: "gold", // #ffb900
+    },
+    {
+        id: 4,
+        title: "COMPLEJO DEPORTIVO VICTORIA",
+        category: "Edificación / Infraestructura",
+        location: "Pachacútec, Ventanilla - Callao",
+        status: "En Ejecución", // Dato importante del brochure
+        asset: "/projects/4.jpg", // Ref: Estadio/Obra
+        theme: "blue", // #0092b8
+    },
+];
+---
+
+<section
+    class="relative py-10 md:py-24 bg-[#09090b] overflow-hidden"
+    id="proyectos"
+>
+    <div
+        class="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png'); background-size: cover; background-position: center; filter: invert(1);"
+    >
+    </div>
+
+    <div
+        class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0092b8] opacity-[0.05] blur-[150px] rounded-full pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+        <div
+            class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+        >
+            <div>
+                <span
+                    class="text-[#ffb900] font-bold tracking-[0.2em] text-xs uppercase mb-3 block animate-pulse"
+                >
+                    Nuestra Huella
+                </span>
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none"
+                >
+                    Trabajos <span class="text-[#0092b8]">Realizados</span>
+                </h2>
+            </div>
+
+            <div class="flex gap-8 border-l border-white/10 pl-8">
+                <div>
+                    <span class="block text-2xl font-bold text-white">Lima</span
+                    >
+                    <span class="text-xs text-gray-500 uppercase tracking-wider"
+                        >Región Centro</span
+                    >
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold text-white">Puno</span
+                    >
+                    <span class="text-xs text-gray-500 uppercase tracking-wider"
+                        >Región Sur</span
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                projects.map((item) => (
+                    <article class="group relative h-[400px] w-full rounded-[24px] perspective-1000 cursor-pointer">
+                        <div
+                            class:list={[
+                                "absolute -inset-[1px] rounded-[24px] bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 blur-[1px]",
+                                item.theme === "blue"
+                                    ? "group-hover:from-[#0092b8] group-hover:to-[#0092b8]/20"
+                                    : "group-hover:from-[#ffb900] group-hover:to-[#ffb900]/20",
+                            ]}
+                        />
+
+                        <div class="relative h-full w-full bg-[#18181b] rounded-[23px] overflow-hidden flex flex-col z-10 border border-white/5">
+                            <Image
+                                src={item.asset}
+                                alt={item.title}
+                                width={720}
+                                height={434}
+                                format="jpg"
+                                quality="mid"
+                                loading="lazy"
+                                class="absolute inset-0 w-full h-full object-cover  group-hover:opacity-100 group-hover:scale-105 transition-all duration-700  group-hover:grayscale-0"
+                            />
+
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity" />
+
+                            <div class="absolute inset-0 p-8 flex flex-col justify-between">
+                                <div class="flex justify-between items-start">
+                                    <span
+                                        class:list={[
+                                            "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border border-white/10",
+                                            item.theme === "blue"
+                                                ? "bg-[#0092b8]/20 text-[#0092b8]"
+                                                : "bg-[#ffb900]/20 text-[#ffb900]",
+                                        ]}
+                                    >
+                                        {item.category}
+                                    </span>
+
+                                    {item.status === "En Ejecución" && (
+                                        <span class="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 backdrop-blur-md">
+                                            <span class="relative flex h-2 w-2">
+                                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                                            </span>
+                                            <span class="text-[10px] font-bold text-green-400 uppercase tracking-wider">
+                                                En Ejecución
+                                            </span>
+                                        </span>
+                                    )}
+                                </div>
+
+                                <div>
+                                    <div class="overflow-hidden mb-2">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-white leading-tight transform translate-y-0 group-hover:-translate-y-1 transition-transform duration-500">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-gray-400 text-sm group-hover:text-white transition-colors">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <>
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                                <circle cx="12" cy="10" r="3" />
+                                            </>
+                                        </svg>
+                                        {item.location}
+                                    </div>
+
+                                    <div
+                                        class:list={[
+                                            "h-[2px] mt-6 w-0 group-hover:w-full transition-all duration-700 ease-out",
+                                            item.theme === "blue"
+                                                ? "bg-[#0092b8]"
+                                                : "bg-[#ffb900]",
+                                        ]}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>

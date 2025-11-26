@@ -1,0 +1,264 @@
+---
+import type { ContactDataProps } from "../lib/types";
+
+const contactInfo: ContactDataProps = [
+    {
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+        title: "Llámanos",
+        value: "+51 937 480 305",
+        sub: "Atención comercial",
+        color: "text-[#0092b8]",
+        bg: "bg-[#0092b8]/10",
+    },
+    {
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+        title: "Escríbenos",
+        value: "info@vilchezgroup.com",
+        sub: "Respuesta en 24h",
+        color: "text-[#ffb900]",
+        bg: "bg-[#ffb900]/10",
+    },
+    {
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+        title: "Horario",
+        value: "Lun - Sab : 08:00 - 17:00",
+        sub: "Domingo cerrado",
+        color: "text-[#0092b8]",
+        bg: "bg-[#0092b8]/10",
+    },
+];
+---
+
+<section
+    class="relative py-10 md:py-24 overflow-hidden bg-[#f8fafc]"
+    id="contacto"
+>
+    <div
+        class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:20px_20px] opacity-60 pointer-events-none"
+    >
+    </div>
+
+    <div
+        class="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0092b8] opacity-[0.03] blur-[120px] rounded-full pointer-events-none"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#ffb900] opacity-[0.03] blur-[120px] rounded-full pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl px-4 md:px-6 mx-auto relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div class="flex flex-col justify-center h-full pt-8">
+                <div class="mb-10">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-[#0092b8] text-xs font-bold uppercase tracking-widest mb-4 shadow-sm"
+                    >
+                        <span
+                            class="inline-block w-2 h-2 rounded-full bg-[#0092b8] mr-1"
+                        ></span>
+                        Contacto Directo
+                    </span>
+                    <h2
+                        class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight"
+                    >
+                        Hablemos de tu <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#0092b8] to-slate-600"
+                            >Próximo Proyecto</span
+                        >
+                    </h2>
+                    <p class="text-slate-600 text-lg leading-relaxed max-w-md">
+                        En <strong>Vilchez Group</strong> transformamos ideas en
+                        infraestructura real. Envíanos tus planos o requerimientos
+                        y recibe una cotización técnica detallada.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    {
+                        contactInfo.map((item) => (
+                            <div class="flex items-center gap-5 p-4 rounded-2xl bg-white border border-gray-200 hover:border-[#0092b8]/30 hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300 group">
+                                <div
+                                    class={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform duration-300`}
+                                >
+                                    <div set:html={item.icon} />
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-0.5">
+                                        {item.title}
+                                    </p>
+                                    <p class="text-slate-900 font-bold text-lg">
+                                        {item.value}
+                                    </p>
+                                    <p class="text-gray-500 text-xs font-medium">
+                                        {item.sub}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div class="relative">
+                <div
+                    class="relative bg-white border border-gray-200 rounded-[24px] p-8 md:p-10 shadow-2xl shadow-gray-200/50"
+                >
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-2xl font-bold text-slate-900">
+                            Solicitar Cotización
+                        </h3>
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"
+                                ></path><path
+                                    d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"
+                                ></path></svg
+                            >
+                        </div>
+                    </div>
+
+                    <form action="" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                    >Nombre</label
+                                >
+                                <input
+                                    type="text"
+                                    placeholder="Tu nombre"
+                                    class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+                                />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                    >Empresa</label
+                                >
+                                <input
+                                    type="text"
+                                    placeholder="Nombre empresa"
+                                    class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                    >Correo</label
+                                >
+                                <input
+                                    type="email"
+                                    placeholder="correo@empresa.com"
+                                    class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+                                />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                    >Teléfono</label
+                                >
+                                <input
+                                    type="tel"
+                                    placeholder="+51 999..."
+                                    class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                >Asunto</label
+                            >
+                            <div class="relative">
+                                <select
+                                    class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all appearance-none cursor-pointer font-medium"
+                                >
+                                    <option>Cotización de Maquinaria</option>
+                                    <option>Obras Civiles</option>
+                                    <option>Instalaciones Sanitarias</option>
+                                    <option>Otro</option>
+                                </select>
+                                <div
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        ><path d="m6 9 6 6 6-6"></path></svg
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                >Adjuntar Archivo (Opcional)</label
+                            >
+                            <input
+                                type="file"
+                                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-slate-500 file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-[#0092b8] file:text-white hover:file:bg-[#007a99] cursor-pointer transition-all"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                                >Mensaje</label
+                            >
+                            <textarea
+                                rows="3"
+                                placeholder="Detalles del proyecto..."
+                                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all resize-none font-medium"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            class="w-full bg-[#ffb900] hover:bg-[#e0a800] text-black font-bold text-lg py-4 rounded-xl transition-all shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 hover:-translate-y-1 mt-4 flex items-center justify-center gap-2"
+                        >
+                            ENVIAR MENSAJE
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path d="m22 2-7 20-4-9-9-4Z"></path><path
+                                    d="M22 2 11 13"></path></svg
+                            >
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
