@@ -395,9 +395,9 @@ Las contribuciones son bienvenidas. Para colaborar:
 ## 👨‍💻 Autor
 
 **Efrael**  
-📧 Email: [tu-email@ejemplo.com]  
-🔗 GitHub: [@efrael](https://github.com/efrael)  
-💼 LinkedIn: [Tu perfil]
+📧 Email: [efrael2001@gmail.com]  
+🔗 GitHub: [@efraeltino](https://github.com/efraeltino)  
+💼 LinkedIn: [Efrael Villanueva](https://www.linkedin.com/in/efrael/)
 
 ---
 
