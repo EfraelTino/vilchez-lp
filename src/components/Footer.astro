@@ -2,40 +2,10 @@
 import { Image } from "astro:assets";
 
 const currentYear = new Date().getFullYear();
----
 
-<footer
-    class="bg-[#09090b] border-t border-white/10 pt-16 pb-8 relative overflow-hidden"
->
-    <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#000000] opacity-[0.05] blur-[100px] rounded-full pointer-events-none"
-    >
-    </div>
+{/*
 
-    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
-        >
-            <div class="space-y-4">
-                <div class="flex items-center gap-2">
-                    <Image
-                        src="/images/logo.png"
-                        alt="Logo"
-                        width={1495}
-                        height={355}
-                        format="png"
-                        quality="high"
-                        loading="lazy"
-                    />
-
-                    >
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Especialistas en ingeniería, construcción y gestión de
-                    proyectos. Comprometidos con la calidad, seguridad y el
-                    desarrollo sostenible.
-                </p>
-                <div class="flex gap-3 pt-2">
+ <div class="flex gap-3 pt-2">
                     <a
                         href="#"
                         class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#0092b8] hover:text-white transition-all duration-300"
@@ -102,6 +72,41 @@ const currentYear = new Date().getFullYear();
                         >
                     </a>
                 </div>
+*/}
+---
+
+<footer
+    class="bg-[#09090b] border-t border-white/10 pt-16 pb-8 relative overflow-hidden"
+>
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#000000] opacity-[0.05] blur-[100px] rounded-full pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <Image
+                        src="/images/logo.png"
+                        alt="Logo"
+                        width={1495}
+                        height={355}
+                        format="png"
+                        quality="high"
+                        loading="lazy"
+                    />
+
+                    >
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Especialistas en ingeniería, construcción y gestión de
+                    proyectos. Comprometidos con la calidad, seguridad y el
+                    desarrollo sostenible.
+                </p>
+               
             </div>
 
             <div>

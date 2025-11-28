@@ -138,11 +138,17 @@ const dataHeader: HeaderProps = [
     const menuMobile = document.getElementById("menuMobile");
 
     let isMenuOpen = false;
+    let ticking = false; // Variable para controlar el requestAnimationFrame
 
-    const onScroll = () => {
+    // 1. Separamos la lógica visual en su propia función
+    const updateHeader = () => {
         if (isMenuOpen) return;
 
-        if (window.scrollY > 20) {
+        // Leemos la posición
+        const scrollPos = window.scrollY;
+
+        // Escribimos en el DOM (Solo cuando el navegador esté listo)
+        if (scrollPos > 20) {
             header.classList.add(
                 "bg-black",
                 "shadow-xl",
@@ -162,7 +168,6 @@ const dataHeader: HeaderProps = [
                 );
             }
         } else {
-
             header.classList.remove(
                 "bg-black",
                 "shadow-xl",
@@ -177,10 +182,26 @@ const dataHeader: HeaderProps = [
                 );
             }
         }
+        
+        // Liberamos el candado para permitir la siguiente actualización
+        ticking = false;
     };
 
+    // 2. El evento de scroll solo "solicita" una actualización, no la ejecuta directamente
+    const onScroll = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    };
+
+    // Listener optimizado
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    
+    // Ejecutar una vez al inicio para verificar posición
+    updateHeader();
+
+    // --- Lógica del Menú (Sin cambios mayores, solo integración) ---
 
     const toggleMenu = () => {
         isMenuOpen = !isMenuOpen;
@@ -197,6 +218,7 @@ const dataHeader: HeaderProps = [
 
             document.body.style.overflow = "hidden";
 
+            // Forzar estado transparente al abrir menú
             header.classList.remove(
                 "bg-black",
                 "shadow-xl",
@@ -215,7 +237,9 @@ const dataHeader: HeaderProps = [
             lines[2].classList.remove("-rotate-45", "-translate-y-[8px]");
 
             document.body.style.overflow = "auto";
-            onScroll();
+            
+            // Re-chequear el scroll al cerrar
+            updateHeader();
         }
     };
 

@@ -1,0 +1,147 @@
+<form action="" class="space-y-5">
+    <div class="grid md:grid-cols-2 gap-5">
+        <div class="space-y-1.5">
+            <label
+                for="nombre"
+                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                >Nombre</label
+            >
+            <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="Tu nombre"
+                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+            />
+        </div>
+        <div class="space-y-1.5">
+            <label
+                for="empresa"
+                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                >Empresa</label
+            >
+            <input
+                id="empresa"
+                name="empresa"
+                type="text"
+                placeholder="Nombre empresa"
+                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+            />
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+        <div class="space-y-1.5">
+            <label
+                for="email"
+                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                >Correo</label
+            >
+            <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="correo@empresa.com"
+                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+            />
+        </div>
+        <div class="space-y-1.5">
+            <label
+                for="telefono"
+                class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+                >Teléfono</label
+            >
+            <input
+                id="telefono"
+                name="telefono"
+                type="tel"
+                placeholder="+51 999..."
+                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all font-medium"
+            />
+        </div>
+    </div>
+
+    <div class="space-y-1.5">
+        <label
+            for="asunto"
+            class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+            >Asunto</label
+        >
+        <div class="relative">
+            <select
+                id="asunto"
+                name="asunto"
+                class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all appearance-none cursor-pointer font-medium"
+            >
+                <option>Cotización de Maquinaria</option>
+                <option>Obras Civiles</option>
+                <option>Instalaciones Sanitarias</option>
+                <option>Otro</option>
+            </select>
+            <div
+                class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+                >
+            </div>
+        </div>
+    </div>
+
+    <div class="space-y-1.5">
+        <label
+            for="archivo"
+            class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+            >Adjuntar Archivo (Opcional)</label
+        >
+        <input
+            id="archivo"
+            name="archivo"
+            type="file"
+            class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-slate-500 file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-[#0092b8] file:text-white hover:file:bg-[#007a99] cursor-pointer transition-all"
+        />
+    </div>
+
+    <div class="space-y-1.5">
+        <label
+            for="mensaje"
+            class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1"
+            >Mensaje</label
+        >
+        <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="3"
+            placeholder="Detalles del proyecto..."
+            class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-slate-900 placeholder-gray-400 focus:outline-none focus:border-[#0092b8] focus:bg-white focus:ring-2 focus:ring-[#0092b8]/20 transition-all resize-none font-medium"
+        ></textarea>
+    </div>
+
+    <button
+        type="submit"
+        class="w-full bg-[#ffb900] hover:bg-[#e0a800] text-black font-bold text-lg py-4 rounded-xl transition-all shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 hover:-translate-y-1 mt-4 flex items-center justify-center gap-2"
+    >
+        ENVIAR MENSAJE
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"
+            ></path></svg
+        >
+    </button>
+</form>

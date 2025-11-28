@@ -1,4 +1,5 @@
 ---
+import "@fontsource-variable/plus-jakarta-sans";
 interface Props {
 	title?: string;
 	description?: string;
@@ -156,13 +157,6 @@ const schemaMarkup = JSON.stringify({
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={socialImageURL} />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-
 		<script type="application/ld+json" set:html={schemaMarkup} />
 	</head>
 	<body
@@ -173,12 +167,14 @@ const schemaMarkup = JSON.stringify({
 </html>
 
 <style is:global>
+	@import "tailwindcss";
 	html {
 		scroll-behavior: smooth;
 		scroll-padding-top: 80px;
 	}
 	body {
 		overflow-x: hidden;
-		font-family: "Plus Jakarta Sans", sans-serif;
+		font-family: "Plus Jakarta Sans Variable", "Plus Jakarta Sans",
+			sans-serif;
 	}
 </style>
