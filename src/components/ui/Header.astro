@@ -63,7 +63,7 @@ const dataHeader: HeaderProps = [
             <a
                 href="https://wa.link/g67lxd"
                 target="_blank"
-                class="hidden md:flex flex-row items-center gap-2 px-5 py-2 rounded-full bg-[#0092b8] hover:bg-[#007a99] text-white font-semibold text-sm transition-all shadow-lg shadow-cyan-500/20 hover:scale-105"
+                class="hidden md:flex flex-row items-center gap-2 px-5 py-2 rounded-lg bg-[#0092b8] hover:bg-[#007a99] text-white font-semibold text-sm transition-all shadow-lg shadow-cyan-500/20 hover:scale-105"
             >
                 Contactar
                 <svg
@@ -122,7 +122,7 @@ const dataHeader: HeaderProps = [
             <a
                 href="#contacto"
                 onclick="closeMenu()"
-                class="px-8 py-3 bg-[#0092b8] rounded-full font-bold text-white shadow-lg shadow-cyan-500/20"
+                class="px-8 py-3 bg-[#0092b8] rounded-md font-bold text-white shadow-lg shadow-cyan-500/20"
             >
                 Cotizar Ahora
             </a>
@@ -138,16 +138,13 @@ const dataHeader: HeaderProps = [
     const menuMobile = document.getElementById("menuMobile");
 
     let isMenuOpen = false;
-    let ticking = false; // Variable para controlar el requestAnimationFrame
+    let ticking = false; 
 
-    // 1. Separamos la lógica visual en su propia función
     const updateHeader = () => {
         if (isMenuOpen) return;
 
-        // Leemos la posición
         const scrollPos = window.scrollY;
 
-        // Escribimos en el DOM (Solo cuando el navegador esté listo)
         if (scrollPos > 20) {
             header.classList.add(
                 "bg-black",
@@ -182,12 +179,9 @@ const dataHeader: HeaderProps = [
                 );
             }
         }
-        
-        // Liberamos el candado para permitir la siguiente actualización
         ticking = false;
     };
 
-    // 2. El evento de scroll solo "solicita" una actualización, no la ejecuta directamente
     const onScroll = () => {
         if (!ticking) {
             window.requestAnimationFrame(updateHeader);
@@ -195,13 +189,9 @@ const dataHeader: HeaderProps = [
         }
     };
 
-    // Listener optimizado
     window.addEventListener("scroll", onScroll, { passive: true });
     
-    // Ejecutar una vez al inicio para verificar posición
     updateHeader();
-
-    // --- Lógica del Menú (Sin cambios mayores, solo integración) ---
 
     const toggleMenu = () => {
         isMenuOpen = !isMenuOpen;
@@ -217,8 +207,6 @@ const dataHeader: HeaderProps = [
             lines[2].classList.add("-rotate-45", "-translate-y-[8px]");
 
             document.body.style.overflow = "hidden";
-
-            // Forzar estado transparente al abrir menú
             header.classList.remove(
                 "bg-black",
                 "shadow-xl",
@@ -238,7 +226,6 @@ const dataHeader: HeaderProps = [
 
             document.body.style.overflow = "auto";
             
-            // Re-chequear el scroll al cerrar
             updateHeader();
         }
     };

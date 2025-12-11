@@ -4,7 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
@@ -13,7 +12,7 @@ export default defineConfig({
   site: 'https://vilchesgroup.com',
 
   image: {
-    domains: ['catbox.moe'], // Agrega los dominios aquí
+    domains: ['catbox.moe'],
   },
   build: {
     format: 'directory',
@@ -21,13 +20,11 @@ export default defineConfig({
   },
   integrations: [sitemap(),
   compress({
-    CSS: true,
     HTML: {
       'html-minifier-terser': {
         removeComments: true,
       },
     },
-    Image: false, // Set to false if already using Astro's <Image />
     JavaScript: true,
     JSON: true,
     SVG: true,
